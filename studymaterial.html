@@ -12,14 +12,14 @@ container.innerHTML="";
 
 data.forEach(file => {
 
-if(file.name.toLowerCase().endsWith(".pdf")){
+if(file.name.endsWith(".pdf")){
 
 let button = document.createElement("button");
 
 button.innerText = file.name;
 
 button.onclick = function(){
-window.open(file.download_url,"_blank");
+window.open(file.download_url);
 }
 
 container.appendChild(button);
@@ -28,9 +28,6 @@ container.appendChild(button);
 
 });
 
-})
-.catch(error=>{
-document.getElementById("pdfList").innerHTML="No study materials found.";
 });
 
 </script>
