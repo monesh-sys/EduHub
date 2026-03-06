@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>MoneshSys Study App</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
-body{
-font-family: Arial;
+*{
 margin:0;
-background:#f4f4f4;
-text-align:center;
+padding:0;
+box-sizing:border-box;
+}
 
-/* Important for footer bottom */
+body{
+font-family:Arial, sans-serif;
+background:#f4f4f4;
+
+/* footer bottom */
 display:flex;
 flex-direction:column;
 min-height:100vh;
 }
 
+/* HEADER */
+
 header{
 background:#1e3a8a;
 color:white;
 padding:20px;
+text-align:center;
+}
+
+/* NAVIGATION */
+
+nav{
+margin-top:10px;
 }
 
 nav a{
 color:white;
-margin:15px;
+margin:10px;
 text-decoration:none;
 font-size:18px;
 }
@@ -34,10 +50,19 @@ nav a:hover{
 text-decoration:underline;
 }
 
+/* MAIN CONTENT */
+
 section{
-flex:1;   /* pushes footer down */
-margin-top:40px;
+flex:1;
+text-align:center;
+padding:40px 20px;
 }
+
+h2{
+margin-bottom:10px;
+}
+
+/* BUTTONS */
 
 .btn{
 display:inline-block;
@@ -54,10 +79,30 @@ text-decoration:none;
 background:#1d4ed8;
 }
 
+/* FOOTER */
+
 footer{
 background:#111;
 color:white;
-padding:20px;
+text-align:center;
+padding:15px;
+}
+
+/* MOBILE DESIGN */
+
+@media(max-width:600px){
+
+nav a{
+display:block;
+margin:8px 0;
+font-size:16px;
+}
+
+.btn{
+width:80%;
+font-size:18px;
+}
+
 }
 
 </style>
@@ -67,6 +112,7 @@ padding:20px;
 <body>
 
 <header>
+
 <h1>MoneshSys Study App</h1>
 
 <nav>
@@ -74,6 +120,7 @@ padding:20px;
 <a href="studymaterial.html">Study Material</a>
 <a href="mocktest.html">Mock Test</a>
 </nav>
+
 </header>
 
 <section>
@@ -82,13 +129,17 @@ padding:20px;
 
 <p>This website provides study materials and mock tests for students.</p>
 
+<br>
+
 <a href="studymaterial.html" class="btn">📚 Study Materials</a>
 <a href="mocktest.html" class="btn">📝 Mock Test</a>
 
 </section>
 
 <footer>
+
 <p>© 2026 MoneshSys Technologies. All rights reserved.</p>
+
 </footer>
 
 </body>
