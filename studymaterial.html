@@ -45,7 +45,7 @@ background:#1d4ed8;
 
 <h1>Study Materials</h1>
 
-<div id="pdf">Loading PDFs...</div>
+<div id="pdfList">Loading PDFs...</div>
 
 <script>
 
@@ -56,7 +56,7 @@ fetch(`https://api.github.com/repos/${username}/${repo}/contents/pdf`)
 .then(response => response.json())
 .then(data => {
 
-let container = document.getElementById("pdf");
+let container = document.getElementById("pdfList");
 container.innerHTML="";
 
 data.forEach(file => {
@@ -88,4 +88,5 @@ container.appendChild(button);
 </body>
 
 </html>
+
 
