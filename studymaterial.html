@@ -56,7 +56,7 @@ fetch(`https://api.github.com/repos/${username}/${repo}/contents/pdf`)
 .then(response => response.json())
 .then(data => {
 
-let container = document.getElementById("pdfList");
+let container = document.getElementById("pdf");
 container.innerHTML="";
 
 data.forEach(file => {
@@ -88,3 +88,4 @@ container.appendChild(button);
 </body>
 
 </html>
+
