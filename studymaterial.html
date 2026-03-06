@@ -4,25 +4,57 @@
 
 <title>Study Materials</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 
-body{
-font-family: Arial;
-background:#f4f4f4;
-text-align:center;
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-h1{
+body{
+font-family:Arial, sans-serif;
+background:#f4f4f4;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* HEADER */
+
+header{
 background:#1e3a8a;
 color:white;
+text-align:center;
 padding:20px;
-margin:0;
 }
 
-#pdfList{
-margin-top:40px;
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+font-size:18px;
 }
+
+nav a:hover{
+text-decoration:underline;
+}
+
+/* MAIN SECTION */
+
+section{
+flex:1;
+text-align:center;
+padding:40px 20px;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+/* PDF BUTTONS */
 
 button{
 padding:12px 25px;
@@ -39,10 +71,46 @@ button:hover{
 background:#1d4ed8;
 }
 
+/* BACK BUTTON */
+
+.back-btn{
+display:inline-block;
+margin-bottom:20px;
+padding:10px 20px;
+background:#16a34a;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-size:16px;
+}
+
+.back-btn:hover{
+background:#15803d;
+}
+
+/* FOOTER */
+
 footer{
-margin-top:60px;
-font-size:14px;
-color:#555;
+background:#111;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+/* MOBILE DESIGN */
+
+@media(max-width:600px){
+
+nav a{
+display:block;
+margin:8px 0;
+}
+
+button{
+width:85%;
+font-size:18px;
+}
+
 }
 
 </style>
@@ -51,36 +119,56 @@ color:#555;
 
 <body>
 
+<header>
+
 <h1>Study Materials</h1>
 
-<div id="pdfList">
-Loading study materials...
-</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="studymaterial.html">Study Material</a>
+<a href="mocktest.html">Mock Test</a>
+</nav>
+
+</header>
+
+<section>
+
+<h2>Available Study Materials</h2>
+
+<div id="pdfList">Loading study materials...</div>
+
+<a href="index.html" class="back-btn">⬅ Back to Home</a>
+  
+</section>
+
+<footer>
+<p>© 2026 MoneshSys Technologies. All rights reserved.</p>
+</footer>
 
 <script>
 
 const username = "monesh-sys";
 const repo = "EduHub";
-const folder = "studymaterial";
+const folder = "pdf";
 
 fetch(`https://api.github.com/repos/${username}/${repo}/contents/${folder}`)
 .then(response => response.json())
 .then(data => {
 
 let container = document.getElementById("pdfList");
-container.innerHTML = "";
+container.innerHTML="";
 
 data.forEach(file => {
 
-if(file.name.toLowerCase().endsWith(".pdf")){
+if(file.name.endsWith(".pdf")){
 
 let button = document.createElement("button");
 
-button.innerText = file.name.replace(".pdf","");
+button.innerText = file.name;
 
 button.onclick = function(){
-window.open(file.download_url, "_blank");
-};
+window.open(file.download_url);
+}
 
 container.appendChild(button);
 
@@ -88,24 +176,9 @@ container.appendChild(button);
 
 });
 
-})
-.catch(error=>{
-document.getElementById("pdfList").innerHTML="No study materials found.";
 });
 
 </script>
 
-<footer>
-<p>© 2026 MoneshSys Technologies. All rights reserved.</p>
-</footer>
-
 </body>
 </html>
-
-<div>
-  <a href="index.html">⬅ Back to Home</a>
-
-</div>
-
-
-
