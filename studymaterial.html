@@ -1,26 +1,87 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Study Materials</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f4f4;
+text-align:center;
+margin:0;
+}
+
+h1{
+background:#1e3a8a;
+color:white;
+padding:20px;
+margin:0;
+}
+
+#pdfList{
+margin-top:40px;
+}
+
+button{
+padding:12px 25px;
+margin:10px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+footer{
+margin-top:60px;
+font-size:14px;
+color:#555;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Study Materials</h1>
+
+<div id="pdfList">
+Loading study materials...
+</div>
+
 <script>
 
 const username = "monesh-sys";
 const repo = "EduHub";
+const folder = "pdf";
 
-fetch(`https://api.github.com/repos/${username}/${repo}/contents/pdf`)
+fetch(`https://api.github.com/repos/${username}/${repo}/contents/${folder}`)
 .then(response => response.json())
 .then(data => {
 
 let container = document.getElementById("pdfList");
-container.innerHTML="";
+container.innerHTML = "";
 
 data.forEach(file => {
 
-if(file.name.endsWith(".pdf")){
+if(file.name.toLowerCase().endsWith(".pdf")){
 
 let button = document.createElement("button");
 
-button.innerText = file.name;
+button.innerText = file.name.replace(".pdf","");
 
 button.onclick = function(){
-window.open(file.download_url);
-}
+window.open(file.download_url, "_blank");
+};
 
 container.appendChild(button);
 
@@ -28,6 +89,17 @@ container.appendChild(button);
 
 });
 
+})
+.catch(error=>{
+document.getElementById("pdfList").innerHTML="No study materials found.";
 });
 
 </script>
+
+<footer>
+<p>© 2026 MoneshSys Technologies. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+```
