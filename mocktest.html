@@ -1,39 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Mock Test</title>
-<link rel="stylesheet" href="style.css">
+
+<title>Mock Tests</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f4f4;
+text-align:center;
+}
+
+h1{
+background:#1e3a8a;
+color:white;
+padding:20px;
+}
+
+#testList{
+margin-top:30px;
+}
+
+button{
+padding:12px 25px;
+margin:10px;
+background:#16a34a;
+color:white;
+border:none;
+border-radius:5px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#15803d;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<header>
 <h1>Mock Tests</h1>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="studymaterial.html">Study Material</a>
-<a href="mocktest.html">Mock Test</a>
-</nav>
-</header>
+<div id="testList">Loading Mock Tests...</div>
 
-<section>
+<script>
 
-<h2>Tamil Mock Test</h2>
+const username = "monesh-sys";
+const repo = "EduHub";
 
-<a href="pdf/tamil_1mark.pdf" target="_blank">
-<button>Start Tamil 1 Mark Test</button>
-</a>
+fetch(`https://api.github.com/repos/${username}/${repo}/contents/mocktest`)
+.then(response => response.json())
+.then(data => {
 
-<br><br>
+let container = document.getElementById("testList");
+container.innerHTML="";
 
-<a href="pdf/tamil_2mark.pdf" target="_blank">
-<button>Start Tamil 2 Mark Test</button>
-</a>
+data.forEach(file => {
 
-</section>
+if(file.name.endsWith(".pdf")){
 
-<footer>
+let button = document.createElement("button");
+
+button.innerText = file.name;
+
+button.onclick = function(){
+window.open(file.download_url);
+}
+
+container.appendChild(button);
+
+}
+
+});
+
+});
+
+</script>
+
+<footer style="margin-top:50px;">
 <p>© 2026 MoneshSys Technologies. All rights reserved.</p>
 </footer>
 
