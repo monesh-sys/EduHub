@@ -17,11 +17,12 @@ box-sizing:border-box;
 body{
 font-family:Arial, sans-serif;
 background:#f4f4f4;
-
 display:flex;
 flex-direction:column;
 min-height:100vh;
 }
+
+/* HEADER */
 
 header{
 background:#1e3a8a;
@@ -29,6 +30,8 @@ color:white;
 text-align:center;
 padding:20px;
 }
+
+/* NAVIGATION */
 
 nav a{
 color:white;
@@ -41,6 +44,8 @@ nav a:hover{
 text-decoration:underline;
 }
 
+/* MAIN SECTION */
+
 section{
 flex:1;
 text-align:center;
@@ -50,6 +55,8 @@ padding:40px 20px;
 h2{
 margin-bottom:20px;
 }
+
+/* MOCK TEST BUTTONS */
 
 button{
 padding:12px 25px;
@@ -66,12 +73,33 @@ button:hover{
 background:#1d4ed8;
 }
 
+/* BACK BUTTON */
+
+.back-btn{
+display:inline-block;
+margin-bottom:20px;
+padding:10px 20px;
+background:#16a34a;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-size:16px;
+}
+
+.back-btn:hover{
+background:#15803d;
+}
+
+/* FOOTER */
+
 footer{
 background:#111;
 color:white;
 text-align:center;
 padding:15px;
 }
+
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -107,16 +135,14 @@ font-size:18px;
 
 <section>
 
+<a href="index.html" class="back-btn">⬅ Back to Home</a>
+
 <h2>Available Mock Tests</h2>
 
 <div id="mockList">Loading mock tests...</div>
 
 </section>
 
-<div>
-  <a href="index.html">Back to Home</a>
-</div>
-  
 <footer>
 <p>© 2026 MoneshSys Technologies. All rights reserved.</p>
 </footer>
@@ -158,4 +184,3 @@ container.appendChild(button);
 
 </body>
 </html>
-
