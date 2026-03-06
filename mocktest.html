@@ -4,37 +4,87 @@
 
 <title>Mock Tests</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 
-body{
-font-family: Arial;
-background:#f4f4f4;
-text-align:center;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-h1{
+body{
+font-family:Arial, sans-serif;
+background:#f4f4f4;
+
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+header{
 background:#1e3a8a;
 color:white;
+text-align:center;
 padding:20px;
 }
 
-#testList{
-margin-top:30px;
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+font-size:18px;
+}
+
+nav a:hover{
+text-decoration:underline;
+}
+
+section{
+flex:1;
+text-align:center;
+padding:40px 20px;
+}
+
+h2{
+margin-bottom:20px;
 }
 
 button{
 padding:12px 25px;
 margin:10px;
-background:#16a34a;
+background:#2563eb;
 color:white;
 border:none;
-border-radius:5px;
+border-radius:6px;
 font-size:16px;
 cursor:pointer;
 }
 
 button:hover{
-background:#15803d;
+background:#1d4ed8;
+}
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+@media(max-width:600px){
+
+nav a{
+display:block;
+margin:8px 0;
+}
+
+button{
+width:80%;
+font-size:18px;
+}
+
 }
 
 </style>
@@ -43,20 +93,41 @@ background:#15803d;
 
 <body>
 
+<header>
+
 <h1>Mock Tests</h1>
 
-<div id="testList">Loading Mock Tests...</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="studymaterial.html">Study Material</a>
+<a href="mocktest.html">Mock Test</a>
+</nav>
+
+</header>
+
+<section>
+
+<h2>Available Mock Tests</h2>
+
+<div id="mockList">Loading mock tests...</div>
+
+</section>
+
+<footer>
+<p>© 2026 MoneshSys Technologies. All rights reserved.</p>
+</footer>
 
 <script>
 
 const username = "monesh-sys";
 const repo = "EduHub";
+const folder = "mocktest";
 
-fetch(`https://api.github.com/repos/${username}/${repo}/contents/mocktest`)
+fetch(`https://api.github.com/repos/${username}/${repo}/contents/${folder}`)
 .then(response => response.json())
 .then(data => {
 
-let container = document.getElementById("testList");
+let container = document.getElementById("mockList");
 container.innerHTML="";
 
 data.forEach(file => {
@@ -81,12 +152,5 @@ container.appendChild(button);
 
 </script>
 
-<footer style="margin-top:50px;">
-<p>© 2026 MoneshSys Technologies. All rights reserved.</p>
-</footer>
-
 </body>
 </html>
-
-<div>
-  <a href="index.html">⬅Back to Home</a>
