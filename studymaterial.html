@@ -62,7 +62,7 @@ Loading study materials...
 
 const username = "monesh-sys";
 const repo = "EduHub";
-const folder = "pdf";
+const folder = "studymaterial";
 
 fetch(`https://api.github.com/repos/${username}/${repo}/contents/${folder}`)
 .then(response => response.json())
@@ -103,3 +103,4 @@ document.getElementById("pdfList").innerHTML="No study materials found.";
 </body>
 </html>
 ```
+
