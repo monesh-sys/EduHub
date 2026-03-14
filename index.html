@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 
 <title>MoneshSys Study App</title>
-  <link rel="icon"; href="logo.png"; type="image/png">
+<link rel="icon" href="logo.png" type="image/png">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
 <style>
 
 *{
@@ -18,15 +19,17 @@ box-sizing:border-box;
 body{
 font-family:Arial, sans-serif;
 background:#f4f4f4;
-
-/* footer bottom */
 display:flex;
 flex-direction:column;
 min-height:100vh;
 }
 
-/* HEADER */
+/* Blur when ad shows */
+.blur{
+filter:blur(5px);
+}
 
+/* HEADER */
 header{
 background:#1e3a8a;
 color:white;
@@ -35,7 +38,6 @@ text-align:center;
 }
 
 /* NAVIGATION */
-
 nav{
 margin-top:10px;
 }
@@ -51,19 +53,12 @@ nav a:hover{
 text-decoration:underline;
 }
 
-/* MAIN CONTENT */
-
+/* MAIN */
 section{
 flex:1;
 text-align:center;
 padding:40px 20px;
 }
-
-h2{
-margin-bottom:10px;
-}
-
-/* BUTTONS */
 
 .btn{
 display:inline-block;
@@ -81,7 +76,6 @@ background:#1d4ed8;
 }
 
 /* FOOTER */
-
 footer{
 background:#111;
 color:white;
@@ -89,10 +83,8 @@ text-align:center;
 padding:15px;
 }
 
-/* MOBILE DESIGN */
-
+/* MOBILE */
 @media(max-width:600px){
-
 nav a{
 display:block;
 margin:8px 0;
@@ -103,7 +95,47 @@ font-size:16px;
 width:80%;
 font-size:18px;
 }
-  
+}
+
+/* AD POPUP */
+#adPopup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+#adBox{
+background:white;
+padding:15px;
+border-radius:10px;
+width:90%;
+max-width:500px;
+text-align:center;
+}
+
+#skipBtn{
+margin-top:10px;
+padding:10px 20px;
+background:red;
+color:white;
+border:none;
+border-radius:5px;
+font-size:16px;
+cursor:pointer;
+display:none;
+}
+
+#timer{
+margin-top:8px;
+font-size:16px;
+color:#333;
 }
 
 </style>
@@ -112,8 +144,9 @@ font-size:18px;
 
 <body>
 
-<header>
+<div id="mainContent">
 
+<header>
 
 <nav>
 <a href="index.html">Home</a>
@@ -131,14 +164,13 @@ font-size:18px;
 
 <br>
 
- <video width="90%" autoplay loop muted playsinline>
-  <source src="advideo.mp4" type="video/mp4">
+<video width="90%" autoplay loop muted playsinline>
+<source src="advideo.mp4" type="video/mp4">
 </video>
-  
+
 <br>
 
-<a href="studymaterial.html" class="btn">📚 Study Materials</a>
-<a href="mocktest.html" class="btn">📝 Mock Test</a>
+<a href="studymaterial.html" class="btn">📚 Study Materials</a> <a href="mocktest.html" class="btn">📝 Mock Test</a>
 
 </section>
 
@@ -148,11 +180,71 @@ font-size:18px;
 
 </footer>
 
+</div>
+
+<!-- AD POPUP -->
+
+<div id="adPopup">
+
+<div id="adBox">
+
+<video width="100%" autoplay muted playsinline>
+<source src="advideo.mp4" type="video/mp4">
+</video>
+
+<div id="timer">Skip available in 5</div>
+
+<button id="skipBtn" onclick="skipAd()">Skip Ad</button>
+
+</div>
+
+</div>
+
+<script>
+
+let countdown = 5;
+
+/* Show ad after 2 seconds */
+setTimeout(function(){
+
+document.getElementById("adPopup").style.display="flex";
+document.getElementById("mainContent").classList.add("blur");
+
+startTimer();
+
+},2000);
+
+/* Countdown timer */
+function startTimer(){
+
+let timerInterval = setInterval(function(){
+
+countdown--;
+
+document.getElementById("timer").innerText = "Skip available in " + countdown;
+
+if(countdown <= 0){
+
+clearInterval(timerInterval);
+
+document.getElementById("timer").style.display="none";
+document.getElementById("skipBtn").style.display="inline-block";
+
+}
+
+},1000);
+
+}
+
+/* Skip ad */
+function skipAd(){
+
+document.getElementById("adPopup").style.display="none";
+document.getElementById("mainContent").classList.remove("blur");
+
+}
+
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
