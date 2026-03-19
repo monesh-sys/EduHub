@@ -33,16 +33,27 @@ text-aligkground:#1e3a8a;n:center;
 padding:20px;
 }
 
-nav a{
-color:#ffffff;
-margin:10px;
-text-decoration:none;
-font-size:18px;
+<style>
+.navbar {
+    position: fixed;   /* stick to top */
+    top: 0;
+    left: 0;
+    padding: 10px 20px;
 }
 
-nav a:hover{
-text-decoration:underline;
+.navbar a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    font-family: Arial;
+    font-size: 16px;
+    transition: 0.3s;
 }
+
+.navbar a:hover {
+    opacity: 0.7;
+}
+
 
 /* MAIN SECTION */
 
@@ -125,11 +136,11 @@ font-size:18px;
 
 <h1>Study Materials</h1>
 
-<nav>
+<navbar>
 <a href="index.html">Home</a>
 <a href="studymaterial.html">Study Material</a>
 <a href="mocktest.html">Mock Test</a>
-</nav>
+</navbar>
 
 </header>
 
