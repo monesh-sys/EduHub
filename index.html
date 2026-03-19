@@ -1,253 +1,173 @@
 <!DOCTYPE html>
-
 <html>
-<head>
-
-<title>MoneshSys Study App</title>
-<link rel="icon" href="logo.png" type="image/png">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:Arial, sans-serif;
-background:#25314f;
-display:flex;
-flex-direction:column;
-min-height:100vh;
-}
-
-/* Blur when ad shows */
-.blur{
-filter:blur(5px);
-}
-
-/* HEADER */
-header{
-background:#1e3a8a;
-color:#f5f5dc;
-padding:15px 50px;
-justify-content: space-between;
-text-align:center;
-position: sticky;
-top: 0;
-z-index: 1000;
-}
-
-/* NAVIGATION */
-nav{
-margin-top:10px;
-}
-
-nav a{
-color:white;
-margin:10px;
-text-decoration:none;
-font-size:18px;
-}
-
-nav a:hover{
-text-decoration:underline;
-}
-
-/* MAIN */
-section{
-flex:1;
-text-align:center;
-padding:40px 20px;
-color:#f5f5dc;
-}
-
-.btn{
-display:inline-block;
-padding:12px 25px;
-margin:10px;
-background:#2563eb;
-color:white;
-border-radius:6px;
-font-size:16px;
-text-decoration:none;
-}
-
-.btn:hover{
-background:#1d4ed8;
-}
-
-/* FOOTER */
-footer{
-color:yellow;
-text-align:center;
-padding:15px;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-nav a{
-display:block;
-margin:8px 0;
-font-size:16px;
-}
-
-.btn{
-width:80%;
-font-size:18px;
-}
-}
-
-/* AD POPUP */
-#adPopup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:9999;
-}
-
-#adBox{
-background:white;
-padding:15px;
-border-radius:10px;
-width:90%;
-max-width:500px;
-text-align:center;
-}
-
-#skipBtn{
-margin-top:10px;
-padding:10px 20px;
-background:red;
-color:white;
-border:none;
-border-radius:5px;
-font-size:16px;
-cursor:pointer;
-display:none;
-}
-
-#timer{
-margin-top:8px;
-font-size:16px;
-color:#333;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div id="mainContent">
-
-<header>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="studymaterial.html">Study Material</a>
-<a href="mocktest.html">Mock Test</a>
-</nav>
-
-</header>
-
-<section>
-
-<h2>Welcome Students</h2>
-
-<p>This website provides study materials and mock tests for students.</p>
-
-<br><br>
-
-<a href="studymaterial.html" class="btn">📚 Study Materials</a> <a href="mocktest.html" class="btn">📝 Mock Test</a>
-
-</section>
-<br><br><br>
-
-<footer>
-
-<p>© 2026 MoneshSys Technologies. All rights reserved.</p>
-
-</footer>
-
-</div>
-
-<!-- AD POPUP -->
-
-<div id="adPopup">
-
-<div id="adBox">
-
-<a href="https://monesh-sys.github.io/MoneshSys-Technologies/" Target="_blank">
-<video width="100%" autoplay muted playsinline>
-<source src="advideo.mp4" type="video/mp4">
-</video>
-</a>
-
-<div id="timer">Skip available in 5</div>
-
-<button id="skipBtn" onclick="skipAd()">Skip Ad</button>
-
-</div>
-
-</div>
-
-<script>
-
-let countdown = 5;
-
-/* Show ad after 2 seconds */
-setTimeout(function(){
-
-document.getElementById("adPopup").style.display="flex";
-document.getElementById("mainContent").classList.add("blur");
-
-startTimer();
-
-},2000);
-
-/* Countdown timer */
-function startTimer(){
-
-let timerInterval = setInterval(function(){
-
-countdown--;
-
-document.getElementById("timer").innerText = "Skip available in " + countdown;
-
-if(countdown <= 0){
-
-clearInterval(timerInterval);
-
-document.getElementById("timer").style.display="none";
-document.getElementById("skipBtn").style.display="inline-block";
-
-}
-
-},1000);
-
-}
-
-/* Skip ad */
-function skipAd(){
-
-document.getElementById("adPopup").style.display="none";
-document.getElementById("mainContent").classList.remove("blur");
-
-}
-
-</script>
-
-</body>
+    <head>
+        <title>Top right</title>
+        <link rel="icon" type="image/png" href="logo.png">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width , initial-scal=1.0">
+        <style>
+            .top-right{
+                position: absolute;
+                top: 10px;
+                right: 200px;
+                cursor: pointer;
+                color: blue;
+                font-family: Arial;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            .top-right:hover{
+                opacity: 0.7;
+            }
+            .top-right:active{
+                opacity: 0.5;
+            }
+            .study{
+                position: absolute;
+                top: 10px;
+                right: 100px;
+                cursor: pointer;
+                color: blue;
+                font-family: Arial;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            .study:hover{
+                opacity: 0.7;
+            }
+            .study:active{
+                opacity: 0.5;
+            }
+            .mock{
+                position: absolute;
+                top: 10px;
+                right:20px;
+                cursor: pointer;
+                color: blue;
+                font-family: Arial;
+                padding-top: 10px;
+                padding-bottom: 50px;
+            }
+            .mock:hover{
+                opacity: 0.7;
+            }
+            .mock:active{
+                opacity: 0.5;
+            }
+            .tittle{
+                margin-top: 0;
+                margin-left: 0;
+                background: linear-gradient(to right, #2f7ecc, #6cc8d6);
+                color: #ffffff;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 5px;
+                font-size: 20px;
+            }
+            .main{
+                text-align: center;
+                margin-top: 100px;
+                color:aliceblue;
+                font-size: 40px;
+            }
+            .paragraph{
+                text-align: center;
+                font-family: comic sans;
+                font-size: 20px;
+                padding-left: 30px;
+                padding-right: 30px;
+                color:#9fe7f2;
+
+            }
+            .material{
+                display: block;
+                margin: 20px auto;
+                margin-top: 40px;
+                padding-bottom: 10px;
+                padding-top: 10px;
+                padding-left: 50px;
+                padding-right: 50px;
+                text-align: center;
+                background-color: #9fe7f2;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 0.15s;
+                font-size: 20px;
+            }
+            .material:hover{
+                opacity: 0.8;
+                box-shadow: 10px 10px 10px rgba(36, 35, 35, 0.282);
+            }
+            .material:active{
+                opacity: 0.6;
+            }
+            .sub{
+                text-align: center;
+                margin-top: 50px;
+                color: rgb(220, 220, 255)
+            }
+            .test{
+                text-align: center;
+                margin-top: 50px;
+                color: rgb(220, 220, 255)
+            }
+            .button-2{
+                display: block;
+                margin: 20px auto;
+                margin-top: 40px;
+                padding-bottom: 10px;
+                padding-top: 10px;
+                padding-left: 50px;
+                padding-right: 50px;
+                text-align: center;
+                background-color: #9fe7f2;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 0.15s;
+                font-size: 20px;
+            }
+            .button-2:hover{
+                opacity: 0.8;
+                box-shadow: 10px 10px 10px rgba(36, 35, 35, 0.282);
+            }
+            .button-2:active{
+                opacity: 0.6;
+            }
+            .founder{
+                text-align: center;
+                margin-top: 100px;
+                background: linear-gradient(to right, #2f7ecc, #6cc8d6);
+                color: #ffffff;
+                padding-bottom: 10px;
+                padding-top: 10px;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body style="background: linear-gradient(to right, #1e3c72, #2a5298);">
+        <div class="top-right">
+            <a style="margin-right: 10px;"><u>Home</u></a>
+        </div>
+        <div>
+        <u class="study">study material</u>
+        <u class="mock">Mock Test</u>
+        <h1 class="tittle">EduHub</h1>
+        <h1 class="main">Vivek Maths & Science</h1>
+        <div>
+        <p class="paragraph">
+            This platform is created for students to learn and easily download study materials.
+        </p>
+        </div>
+        <div>
+            <h2 class="sub">👇 Download Study Material📖</h2>
+            <button class="material" onclick="location.href='studymaterial.html'">
+                 📑 Study Material
+            </button>
+            <h2 class="test">👇 Download Question Bank </h2>
+            <button class="button-2" onclick="location.href='mocktest.html'">
+                🧾Question Bank</button>
+            <p class="founder">© 2026 MoneshSys Technologies. All rights reserved.</p>
+        </div>
+        </div>
+    </body>
 </html>
