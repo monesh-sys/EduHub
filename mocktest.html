@@ -101,7 +101,7 @@ fetch(`https://api.github.com/repos/${username}/${repo}/contents/${folder}`)
 .then(response => response.json())
 .then(data => {
 
-let container = document.getElementById("mockList");
+let container = document.getElementById("pdfList");
 container.innerHTML="";
 
 data.forEach(file => {
