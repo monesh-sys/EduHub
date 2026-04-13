@@ -143,7 +143,7 @@
                 font-size: 18px;
             }
         </style>
-        <script type="module">
+       <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
@@ -155,11 +155,14 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // Check login
+  // Wait for Firebase to load user
   onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      // NOT logged in → go to signup
-      window.location.href = "signup.html";
+    if (user) {
+      console.log("User logged in ✅");
+      // stay on index
+    } else {
+      console.log("No user ❌");
+      window.location.href = "login.html"; // better use login
     }
   });
 </script>
