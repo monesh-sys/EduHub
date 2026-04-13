@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Login - EduHub</title>
+  <title>Signup - EduHub</title>
 
   <style>
     body {
@@ -69,13 +69,11 @@
       transform: scale(1.02);
     }
 
-    /* 👁️ eye icon */
     .toggle {
       position: absolute;
       right: 10px;
       top: 10px;
       cursor: pointer;
-      font-size: 14px;
       color: violet;
     }
 
@@ -116,7 +114,7 @@
 <body>
 
   <div class="box">
-    <h2>Login</h2>
+    <h2>Signup</h2>
 
     <div class="input-box">
       <input type="email" id="email" placeholder="Enter Email">
@@ -127,14 +125,14 @@
       <span class="toggle" onclick="togglePassword()"></span>
     </div>
 
-    <button onclick="login()">Login</button>
+    <button id="signupBtn">Sign Up</button>
 
-    <p>New user? <a href="signup.html">Signup</a></p>
+    <p>Already have account? <a href="login.html">Login</a></p>
   </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCeacJhCk4Hy00YFgmpD4FcZ_EcMgugWko",
@@ -144,21 +142,26 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    window.login = function () {
+    const btn = document.getElementById("signupBtn");
+
+    btn.addEventListener("click", () => {
       let email = document.getElementById("email").value;
       let password = document.getElementById("password").value;
 
-      signInWithEmailAndPassword(auth, email, password)
+      if (email === "" || password === "") {
+        alert("Please fill all fields ❗");
+        return;
+      }
+
+      createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-          alert("Login success ✅");
-          setTimeout(() => {
-            window.location.href = "index.html";
-          }, 500);
+          alert("Signup success 🎉");
+          window.location.href = "login.html";
         })
         .catch(err => alert(err.message));
-    }
+    });
 
-    // 👁️ show/hide password
+    // 👁️ toggle password
     window.togglePassword = function () {
       let pass = document.getElementById("password");
       pass.type = pass.type === "password" ? "text" : "password";
