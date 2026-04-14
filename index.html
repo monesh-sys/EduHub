@@ -148,20 +148,17 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCeacJhCk4Hy00YFgmpD4FcZ_EcMgugWko",
-  authDomain: "eduhub-630e3.firebaseapp.com",
+  apiKey: "YOUR_KEY",
+  authDomain: "YOUR_DOMAIN"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 onAuthStateChanged(auth, (user) => {
-    if (user) {
-        console.log("User logged in ✅");
-    } else {
-        console.log("No user ❌");
-        window.location.replace("login.html");
-    }
+  if (!user) {
+    window.location.replace("login.html"); // force back to login
+  }
 });
 </script>
     </head>
